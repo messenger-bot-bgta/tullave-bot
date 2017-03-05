@@ -1,0 +1,15 @@
+version: '2.1'
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: docker/bot/Dockerfile
+    ports:
+      - "3005:3000"
+    volumes:
+      - .:/usr/src/app
+    links:
+      - redis
+  redis:
+    image: redis:3.2.7
